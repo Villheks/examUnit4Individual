@@ -9,24 +9,24 @@ namespace LogSummarizer
     {
         static void Main(string[] args)
         {
-            // Check if the correct argument is provided
+            
             if (args.Length != 1 || args[0] != "-A")
             {
                 Console.WriteLine("Usage: dotnet run -A");
                 return;
             }
 
-            // Define the log file name
+            
             string logFileName = "simon_game_log.txt";
 
-            // Check if the log file exists
+            
             if (!File.Exists(logFileName))
             {
                 Console.WriteLine("Error: Log file not found.");
                 return;
             }
 
-            // Read the log file and summarize its content
+            
             try
             {
                 Dictionary<string, int> buttonPressCounts = new Dictionary<string, int>();
@@ -40,7 +40,7 @@ namespace LogSummarizer
                     {
                         if (line.Contains("Rounds Finished"))
                         {
-                            // Extract rounds finished and buttons pressed using regex
+                            
                             Match match = Regex.Match(line, @"Rounds Finished: (\d+), Buttons Pressed: (\d+)");
                             if (match.Success)
                             {
@@ -50,7 +50,7 @@ namespace LogSummarizer
                         }
                         else if (line.Contains("Button"))
                         {
-                            // Extract button color using regex
+                            
                             Match match = Regex.Match(line, @"Button (\w+) Pressed");
                             if (match.Success)
                             {
